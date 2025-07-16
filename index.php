@@ -389,7 +389,7 @@
                 width: 12px;
                 height: 12px;
                 background: #bbb;
-                border-radius: 50%;
+                border-radius: 20px;
                 cursor: pointer;
                 transition: all ease-out 0.3s;
             }
@@ -397,7 +397,9 @@
             .dot.active {
                 background: #00b7ff;
                 box-shadow: 0 0 5px #00b7ff;
-                scale: 1.1;
+                scale: 1;
+                width: 20px;
+
             }
             @media screen and (max-width: 415px) {
                 .nav-button {
