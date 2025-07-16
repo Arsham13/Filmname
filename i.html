@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>انیمیشن هنگام اسکرول</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .box {
+      width: 100%;
+      height: 150px;
+      margin: 60px 0;
+      background: #4caf50;
+      color: white;
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    /* قبل از دیده شدن */
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    /* بعد از دیده شدن */
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 style="text-align:center;">آیتم‌ها با انیمیشن اسکرول</h1>
+
+    <div class="box hidden">آیتم اول</div>
+    <div class="box hidden">آیتم دوم</div>
+    <div class="box hidden">آیتم سوم</div>
+    <div class="box hidden">آیتم چهارم</div>
+    <div class="box hidden">آیتم پنجم</div>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // فقط یک بار اجرا بشه
+        }
+      });
+    });
+
+    document.querySelectorAll('.box').forEach(box => {
+      observer.observe(box);
+    });
+  </script>
+
+</body>
+</html>
