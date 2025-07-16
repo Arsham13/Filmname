@@ -16,16 +16,11 @@ $movie = json_decode($data, true); // تبدیل JSON به آرایه
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="firstStyles.css">
+    <link rel="stylesheet" href="./main/firstStyles.css">
     <title>Document</title>
 </head>
 
 <style>
-@font-face {
-    font-family: "hey";
-    src: url("./Peyda-Bold.ttf");
-}
-
 header {
     z-index: -2;
     background-image: linear-gradient(#00000075, #00000070);
@@ -53,7 +48,7 @@ header {
 .hero {
     filter: blur(10px) !important;
     scale: 1.04;
-    background-image: url(<?= $movie['Poster'] == "N/A" ? " ./hero.jpg " : $movie['Poster']  ?>) !important;
+    background-image: url(<?= $movie['Poster'] == "N/A" ? " ./images/hero.jpg " : $movie['Poster']  ?>) !important;
     background-repeat: no-repeat;
     background-position: center;
     background-repeat: no-repeat;
@@ -130,11 +125,11 @@ span {
 <body>
     <?php if ($movie['Response'] == 'True') { ?>
 
-    <?php include "./mouse.php"  ?>
-    <?php include "./navar.php" ?>
-    <?php include "./nav.php" ?>
-    <?php include "./hero.php" ?>
-    <?php include "./toTop.php" ?>
+    <?php include "./parts/mouse.php"  ?>
+    <?php include "./parts/navar.php" ?>
+    <?php include "./parts/nav.php" ?>
+    <?php include "./parts/hero.php" ?>
+    <?php include "./parts/toTop.php" ?>
 
     <header>
         <div class=" all">
@@ -170,7 +165,7 @@ span {
                             <?= $movie['imdbID']  == "N/A" ? " - " : $movie['imdbID'] ?>
                         </span>
                     </h6>
-                    <img src=" <?= $movie['Poster'] == "N/A" ? " ./NotFound.png " : $movie['Poster'] ?>"
+                    <img src=" <?= $movie['Poster'] == "N/A" ? " ./images/NotFound.png " : $movie['Poster'] ?>"
                         alt="<?= $movie['Title'] ?> Poster" id="poster">
                     <h6>
                         <span>نوع</span> : <?= $movie['Type'] == "movie" ? "فیلم سینمایی" : "سریال" ?>
@@ -245,28 +240,29 @@ span {
 
     </header>
 
-    <!--
 
-            <?php if ($movie['Type'] != "series") { ?>
-            <h1>
-                box office :
-
-            </h1>
-            <?php } ?> -->
-    <?php include "./footer.php" ?>
+    <?php include "./parts/footer.php" ?>
     <?php
 } else if($_GET['title'] == '') {
-    echo "    <div class='notFound' id='notFound1'
-    style='display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: 'hey';'>
-    <h1 style='color: #000;'>لطفا نام فیلم را وارد کنید</h1>
-</div>";
+    echo "    
+        <div class='notFound' id='notFound1' style='display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: 'hey';'>
+            <h1 style='color: #000;'>
+                لطفا نام فیلم را وارد کنید
+            </h1>
+        </div>
+    ";
     } else {
-        echo "     <div class='notFound' id='notFound1'
-        style='display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: 'hey';'>
-        <h1 style='color: #000;'>یافت نشد!</h1>
-        <h1 style='color: #000;'>اگر نام فیلم را فارسی وارد کرده اید لطفا انگلیسی وارد کنید. اگر انگلیسی وارد کرده اید در نگارش و نوشتن آن
-            دقت کنید که اشتباه ننوشته باشید. در غیر اینصورت فیلم مورد نظر شما در پایگاه داده وجود ندارد!</h1>
-    </div>";
+        echo "     
+            <div class='notFound' id='notFound2' style='display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: 'hey';'>
+                <img src='.././images/NotFound.png' width='100px' height='100px' />
+                <h1 style='color: #000;'>
+                    یافت نشد!
+                </h1>
+                <h1 style='color: #000;'>
+                    اگر نام فیلم را فارسی وارد کرده اید لطفا انگلیسی وارد کنید. اگر انگلیسی وارد کرده اید در نگارش و نوشتن آن دقت کنید که اشتباه ننوشته باشید. در غیر اینصورت فیلم مورد نظر شما در پایگاه داده وجود ندارد!
+                </h1>
+            </div>
+    ";
     }
     ?>
 </body>
