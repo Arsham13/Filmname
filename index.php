@@ -397,7 +397,6 @@
             .dot.active {
                 background: #00b7ff;
                 box-shadow: 0 0 5px #00b7ff;
-                scale: 1;
                 width: 20px;
 
             }
