@@ -237,6 +237,12 @@
         width: 100%;
     }
 
+    .dot.active {
+        background: #00b7ff;
+        box-shadow: 0 0 5px #00b7ff;
+        width: 20px;
+    }
+
     .featurs .title {
         font-size: 3em;
         margin: 0 0 40px 0;
