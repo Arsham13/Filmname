@@ -34,7 +34,6 @@ window.addEventListener("scroll", () => {
             innerHeight) *
         100
 
-    console.log(scrolled);
     if (scrolled >= 80) {
         toTop.style.scale = 1;
     } else {

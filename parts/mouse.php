@@ -1,7 +1,7 @@
 <style>
 .mouse {
     display: none;
-    transition: 100ms;
+    /* transition: 50ms; */
     position: fixed;
     background-color: transparent;
     width: 20px;
@@ -25,6 +25,15 @@
 
 <script>
 const mouse = document.querySelector(".mouse");
+const all = document.querySelectorAll("*");
+all.forEach(item => {
+    item.addEventListener("mousemove", () => {
+        if (item.style.cursor == "pointer") {
+            mouse.style = "background: red !important;"
+        }
+    })
+});
+console.log(all);
 let isTouch = false;
 
 // حرکت موس

@@ -1,3 +1,23 @@
+<?php
+$pdo = require_once './Connection.php';
+
+$username = "Ayshin";
+$password = hash("haval160,4", "123456789");
+$age = 33;
+$gender = "Female";
+
+$sql = "INSERT INTO Users(Username, Password, Age, Gender) VALUES(:username, :password, :age, :gender)";
+$statement = $pdo->prepare($sql);
+
+
+// $statement->execute([
+//     ":username" => $username,
+//     ":password" => $password,
+//     ":age" => $age,
+//     ":gender" => $gender,
+// ]);
+
+?>
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -507,12 +527,10 @@
 
     function nextSlide() {
         goToSlide(current + 1);
-        console.log(current);
     }
 
     function prevSlide() {
         goToSlide(current - 1);
-        console.log(current);
     }
     // Touch + Mouse Drag Events
     function startDrag(x) {
