@@ -1,3 +1,6 @@
+<?php 
+    
+?>
 <style>
 .footer {
     background-image: url(".././images/Footer-Background.jpg");

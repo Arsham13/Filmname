@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $api_key = "72bbcf46"; // کلید واقعی شما
 $movie_title = $_GET["title"]; // عنوان فیلم
 $url = "http://www.omdbapi.com/?t=" . urlencode($movie_title) . "&apikey=" . $api_key . "&plot=full";
@@ -9,7 +12,7 @@ $movie = json_decode($data, true); // تبدیل JSON به آرایه
 
 // نمایش اطلاعات
 
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +20,9 @@ $movie = json_decode($data, true); // تبدیل JSON به آرایه
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main/firstStyles.css">
-    <title>Document</title>
+    <title>Filmanme - <?= $movie['Title'] ?></title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+
 </head>
 
 <style>
@@ -175,13 +180,13 @@ span {
                     </h6>
                     <div class='genres'>
                         <?php
-                $separator = ",";
-                $genres = explode($separator, $movie['Genre']); 
-                foreach ($genres as $key => $genre) {
-                    $genre == "N/A" ? $genre = " - " : $genre;
-                    echo "<h5 class='genre'>$genre</h5>";
-                        }
-                        ?>
+                            $separator = ",";
+                            $genres = explode($separator, $movie['Genre']);
+                            foreach ($genres as $key => $genre) {
+                                $genre == "N/A" ? $genre = " - " : $genre;
+                                echo "<h5 class='genre'>$genre</h5>";
+                            }
+                            ?>
 
                     </div>
                 </div>
@@ -217,8 +222,8 @@ span {
                     <span>رتبه بندی ها</span> :
                     <br>
                     <?php foreach ($movie['Ratings'] as $key => $rating) {
-                        echo $rating['Source'] . ' : ' . $rating['Value'] . '<br/>';
-                    } ?>
+                            echo $rating['Source'] . ' : ' . $rating['Value'] . '<br/>';
+                        } ?>
                     Meta Score :
                     <?= $movie['Metascore'] == "N/A" ? " - " : $movie['Metascore'] ?>
                     <br><br>
@@ -243,8 +248,8 @@ span {
 
     <?php include "./parts/footer.php" ?>
     <?php
-} else if($_GET['title'] == '') {
-    echo "    
+    } else if ($_GET['title'] == '') {
+        echo "    
         <div class='notFound' id='notFound1' style='display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: 'hey';'>
             <h1 style='color: #000;'>
                 لطفا نام فیلم را وارد کنید

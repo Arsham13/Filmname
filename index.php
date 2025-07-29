@@ -1,21 +1,6 @@
 <?php
-$pdo = require_once './Connection.php';
 
-$username = "Ayshin";
-$password = hash("haval160,4", "123456789");
-$age = 33;
-$gender = "Female";
-
-$sql = "INSERT INTO Users(Username, Password, Age, Gender) VALUES(:username, :password, :age, :gender)";
-$statement = $pdo->prepare($sql);
-
-
-// $statement->execute([
-//     ":username" => $username,
-//     ":password" => $password,
-//     ":age" => $age,
-//     ":gender" => $gender,
-// ]);
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +10,8 @@ $statement = $pdo->prepare($sql);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./main/firstStyles.css" />
-    <title>Document</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <title>Filmname - A Website Full Of Movies Info</title>
     <style>
     .hero {
         position: fixed;
@@ -218,8 +204,7 @@ $statement = $pdo->prepare($sql);
         display: flex;
         align-items: center;
         font-size: 1.2em;
-        background-color: #00b7ff36;
-        backdrop-filter: blur(4px);
+        background-color: #00b7ff50;
         border-radius: 20px;
         padding: 10px;
 

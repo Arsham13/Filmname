@@ -1,3 +1,13 @@
+<?php
+
+
+$isLogin = false;
+if (isset($_SESSION["user"])) {
+    $isLogin = true;
+}
+?>
+
+
 <style>
 nav {
     position: fixed;
@@ -13,6 +23,7 @@ nav {
 }
 
 @keyframes nav {
+
     0% {
         translate: 100% 0;
     }
@@ -64,16 +75,40 @@ nav .links a::before {
 }
 
 nav .links a:hover {
+    scale: 1.05;
     color: #00b7ff;
 }
 
 nav .links a:hover::before {
     background-color: #00b7ff;
+    box-shadow: 0 0 5px 0 #00b7ff;
     width: 100%;
     right: 0%;
 }
 
-@media screen and (max-width:850px) {
+#login {
+    text-shadow: 0 0 5px #00b7ff;
+    font-size: 1.2em;
+}
+
+#login:hover {
+    color: #fff;
+}
+
+#login::before {
+    z-index: -1;
+    left: -10px;
+    bottom: -9px;
+}
+
+#login:hover::before {
+    border-radius: 5px;
+    height: 160%;
+    right: -10px;
+    width: calc(100% + 20px);
+}
+
+@media screen and (max-width:950px) {
     nav .links {
         top: 0;
         width: 70%;
@@ -127,6 +162,19 @@ nav .links a:hover::before {
     #close {
         display: block !important;
     }
+
+    #login::before {
+        z-index: -1;
+        left: 0;
+        bottom: 0px;
+    }
+
+    #login:hover::before {
+        border-radius: 5px;
+        height: 100%;
+        right: 0px;
+        width: 100%;
+    }
 }
 </style>
 <nav>
@@ -138,15 +186,17 @@ nav .links a:hover::before {
         <img style="display: none; rotate: 180deg; height: 35px; width: 35px; margin: 0 30px;"
             src=".././images/close.png" id="close" alt="close">
 
+        <a id="login"
+            href="<?= $isLogin ? 'profile.php' : 'login_page.php' ?>"><?= $isLogin ? 'پروفایل' : 'ثبت نام / ورود' ?></a>
         <a href=".././index.php#form">جستجو</a>
         <a href=".././index.php#main">ویژگی ها</a>
         <a href="#">درباره ما</a>
-        <!-- <a href="#">فیلم ها</a> -->
     </div>
 
     <div style="margin: 0 30px">
         <img id="logo" src=".././images/logo.png" alt="logo" style="height: 70px" />
     </div>
+
 </nav>
 <script>
 const navbar = document.querySelector("nav");

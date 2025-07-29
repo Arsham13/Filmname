@@ -18,19 +18,17 @@
     padding: 0;
     direction: rtl;
     scrollbar-color: #00b7ff #333;
-    scroll-padding: 40px;
     scroll-behavior: smooth;
+    scrollbar-width: auto;
 }
-html,
-body,
-head {
-    cursor: progress;
-}
-
 
 body {
     font-family: "hey";
     word-spacing: 3px;
     font-size: 0.85em;
     color: #fff;
+}
+
+button{
+    cursor: pointer;
 }
